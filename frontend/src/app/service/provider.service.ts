@@ -8,7 +8,7 @@ import { IProvider } from '../model/providers.model';
   providedIn: 'root',
 })
 export class ProviderService {
-  apiUrl = environment.apiUrl;
+  apiUrl = environment.baseUrl + environment.providerUrl;
 
   constructor(private http: HttpClient) {}
 
@@ -19,7 +19,7 @@ export class ProviderService {
 
   //get provider by id
   getProvider(id: string): Observable<IProvider> {
-    return this.http.get<IProvider>(this.apiUrl + id);
+    return this.http.get<IProvider>(this.apiUrl + '/' + id);
   }
 
   //update provider by id
@@ -27,7 +27,7 @@ export class ProviderService {
     id: string,
     updatedProvider: IProvider
   ): Observable<IProvider> {
-    return this.http.put<IProvider>(this.apiUrl + id, {
+    return this.http.put<IProvider>(this.apiUrl + '/' + id, {
       provider: updatedProvider,
     });
   }
@@ -37,6 +37,6 @@ export class ProviderService {
   }
 
   deleteProvider(id: string): Observable<any> {
-    return this.http.delete(this.apiUrl + id);
+    return this.http.delete(this.apiUrl + '/' + id);
   }
 }

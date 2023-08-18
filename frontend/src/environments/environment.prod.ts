@@ -1,4 +1,5 @@
 export const environment = {
-    production: true,
-    apiUrl: 'http://localhost:3000/v1/provider/',
+  production: true,
+  baseUrl: 'https://mean-stack-agency-api.vercel.app/v1',
+  providerUrl: '/provider',
 };
